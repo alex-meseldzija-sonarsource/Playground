@@ -26,12 +26,9 @@ steps:
     projectKey: 'alexmeseldzija_alex-test'
     projectName: 'Alex-Test'
     extraProperties: |
-      # Additional properties that will be passed to the scanner, 
-      # Put one key=value per line, example:
-      # sonar.exclusions=**/*.bin
       sonar.sources="c:/dev"
       sonar.tests="c:/dev/test"
-      sonar.verbose
+      sonar.verbose=true
       /d:sonar.scanner.scanAll=false
 
 - task: DotNetCoreCLI@2
