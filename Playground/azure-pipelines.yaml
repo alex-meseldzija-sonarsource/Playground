@@ -29,6 +29,9 @@ steps:
       # Additional properties that will be passed to the scanner, 
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
+      sonar.sources="c:/dev"
+      sonar.tests="c:/dev/test"
+      sonar.verbose
       /d:sonar.scanner.scanAll=false
 
 - task: DotNetCoreCLI@2
