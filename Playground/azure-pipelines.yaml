@@ -20,7 +20,7 @@ steps:
 - task: SonarCloudPrepare@1
   displayName: 'Prepare analysis configuration'
   inputs:
-    SonarCloud: 'SC'
+    SonarCloud: 'SonarCloud'
     organization: 'alexmeseldzija'
     scannerMode: 'MSBuild'
     projectKey: 'alexmeseldzija_alex-test'
