@@ -24,7 +24,7 @@ steps:
   displayName: 'run scanner prep'
 
 - pwsh: |
-      chmod +x ./scanner/sonar-scanner-5.0.1.3006/*
+      chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'chmod perms'
 
