@@ -24,6 +24,7 @@ steps:
       /d:sonar.host.url="https://sonarcloud.io" `
       /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" `
       /d:sonar.verbose=true
+  workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
 
 - task: DotNetCoreCLI@2
