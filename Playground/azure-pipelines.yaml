@@ -22,11 +22,11 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      .\scanner\SonarScanner.MSBuild.exe begin 
-      /o:"alexmeseldzija" 
-      /k:"alexmeseldzija_alex-test" 
-      /d:sonar.host.url="https://sonarcloud.io" 
-      /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" 
+      .\scanner\SonarScanner.MSBuild.exe begin `
+      /o:"alexmeseldzija" `
+      /k:"alexmeseldzija_alex-test" `
+      /d:sonar.host.url="https://sonarcloud.io" `
+      /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" `
       /d:sonar.verbose=true
       
 
