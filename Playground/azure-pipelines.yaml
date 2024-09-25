@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS-14'
 
 variables:
   solution: '**/*.sln'
@@ -19,17 +19,18 @@ steps:
     feedsToUse: 'select'
 
 - script: |
-    sudo apt-get update
-    sudo apt-get install -y openjdk-17-jdk
+    brew update
+    brew install openjdk-17-jdk
+    sudo ln -sfn $(brew --prefix openjdk@17)/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
   displayName: 'Install OpenJDK 17'
 
 - script: |
-    JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    JAVA_17_HOME=$(/usr/libexec/java_home -v 17)
     
-    # Set JAVA_HOME to point to Java 17
+    # Set JAVA_HOME for subsequent steps
     echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_17_HOME"
     
-    # Prepend Java 17 to PATH to ensure it's the default in this pipeline
+    # Add JAVA_HOME to the PATH to ensure Java 17 is used
     echo "##vso[task.setvariable variable=PATH]$JAVA_17_HOME/bin:$(PATH)"
   displayName: 'Set JAVA_HOME to Java 17'
 
@@ -41,7 +42,7 @@ steps:
   displayName: 'Verify Java Installation'
 
 - pwsh: |
-      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.scanner.skipJreProvisioning=true /d:sonar.exclusions="**/*.yaml"
+      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.scanner.skipJreProvisioning=true /d:sonar.exclusions="./Playground.Test/**"
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
 
