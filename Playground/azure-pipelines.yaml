@@ -17,7 +17,7 @@ steps:
     projects: '**/*.sln'
     feedsToUse: 'select'
 
-- script: |
+- pwsh: |
       .\scanner\SonarScanner.MSBuild.exe begin `
       /o:"alexmeseldzija" `
       /k:"alexmeseldzija_alex-test" `
