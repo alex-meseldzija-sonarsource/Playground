@@ -18,10 +18,17 @@ steps:
     projects: '**/*.sln'
     feedsToUse: 'select'
 
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y openjdk-11-jre
+  displayName: 'Install Default Java Runtime Environment'
+
+
 - pwsh: |
       dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.scanner.skipJreProvisioning=true
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
+
 
 - pwsh: |
       chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
