@@ -19,9 +19,14 @@ steps:
     feedsToUse: 'select'
 
 - pwsh: |
-      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true
+      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.sources="c:/dev" /d:sonar.tests="c:/dev"
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
+
+- pwsh: |
+      chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'chmod perms'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
@@ -40,8 +45,3 @@ steps:
     dotnet ./scanner/SonarScanner.MSBuild.dll end /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed"  
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner endstep'
-
-- task: SonarCloudPublish@1
-  displayName: 'Publish results on build summary'
-  inputs:
-    pollingTimeoutSec: '300'
