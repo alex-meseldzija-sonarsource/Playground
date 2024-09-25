@@ -49,7 +49,7 @@ steps:
       /d:sonar.verbose=true `
       /d:sonar.scanner.scanAll=true `
       /d:sonar.scanner.skipJreProvisioning=true `
-      /d:sonar.projectBaseDir="$(Build.SourcesDirectory)/Playground"
+      /d:sonar.dotnet.excludeTestProjects=true `
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
 
