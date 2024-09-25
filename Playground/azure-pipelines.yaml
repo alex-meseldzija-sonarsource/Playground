@@ -13,7 +13,7 @@ steps:
 
 - script: |
     sudo apt-get update
-    sudo apt-get install -y www-browser  # or lynx/w3m/links, depending on availability
+    sudo apt-get install -y lynx
   displayName: 'Install www-browser on Linux VM'
 
 - task: DotNetCoreCLI@2
