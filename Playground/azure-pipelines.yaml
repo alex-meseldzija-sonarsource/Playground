@@ -41,7 +41,7 @@ steps:
   displayName: 'Verify Java Installation'
 
 - pwsh: |
-      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.scanner.skipJreProvisioning=true /d:sonar.dotnet.excludeTestProjects=true 
+      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true /d:sonar.scanner.scanAll=true /d:sonar.scanner.skipJreProvisioning=true /d:sonar.exclusions="scanner/**"
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
 
