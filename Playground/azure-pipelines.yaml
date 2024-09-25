@@ -36,9 +36,10 @@ steps:
     projects: '**/*.csproj'
     arguments: '--collect "Code Coverage"'
 
-- task: SonarCloudAnalyze@1
-  inputs:
-    jdkversion: 'JAVA_HOME_17_X64'
+- pwsh: |
+    dotnet ./scanner/SonarScanner.MSBuild.dll end /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed"  
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'run scanner endstep'
 
 - task: SonarCloudPublish@1
   displayName: 'Publish results on build summary'
