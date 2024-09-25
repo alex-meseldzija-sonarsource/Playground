@@ -25,6 +25,11 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'alexmeseldzija_alex-test'
     projectName: 'Alex-Test'
+    extraProperties: |
+      sonar.sources="c:/dev"
+      sonar.tests="c:/dev/test"
+      sonar.verbose=true
+      /d:sonar.scanner.scanAll=false
 
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
@@ -40,7 +45,8 @@ steps:
     arguments: '--collect "Code Coverage"'
 
 - task: SonarCloudAnalyze@1
-  displayName: 'Run SonarCloud analysis'
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
 
 - task: SonarCloudPublish@1
   displayName: 'Publish results on build summary'
