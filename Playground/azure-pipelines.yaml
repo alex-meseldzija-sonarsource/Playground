@@ -23,6 +23,11 @@ steps:
   workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'run scanner prep'
 
+- pwsh: |
+      chmod +x ./scanner/sonar-scanner-5.0.1.3006/*
+  workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'chmod perms'
+
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
   inputs:
