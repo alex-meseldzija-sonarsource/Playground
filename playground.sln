@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "playground", "Playground\pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground.Test", "Playground.Test\Playground.Test.csproj", "{354C239C-9FA8-445C-8DFA-FDF3D39BB06B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-function-repro", "azure-function-repro\azure-function-repro.csproj", "{292B9D47-846E-446D-BE62-99818F390913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{354C239C-9FA8-445C-8DFA-FDF3D39BB06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{354C239C-9FA8-445C-8DFA-FDF3D39BB06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{354C239C-9FA8-445C-8DFA-FDF3D39BB06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{292B9D47-846E-446D-BE62-99818F390913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292B9D47-846E-446D-BE62-99818F390913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292B9D47-846E-446D-BE62-99818F390913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292B9D47-846E-446D-BE62-99818F390913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
