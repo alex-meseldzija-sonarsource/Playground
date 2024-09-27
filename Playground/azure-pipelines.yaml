@@ -34,8 +34,8 @@ steps:
       # sonar.exclusions=**/*.bin
       sonar.exclusions=**/*.bin
       sonar.scanner.scanAll=false
-      /d:sonar.sources="c:/dev" 
-      /d:sonar.tests="c:/dev"
+      sonar.sources="c:/dev" 
+      sonar.tests="c:/dev"
 
 #- pwsh: |
 #      chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
