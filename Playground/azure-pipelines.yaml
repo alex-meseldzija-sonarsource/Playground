@@ -38,7 +38,7 @@ steps:
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
       sonar.exclusions=**/*.bin
-      sonar.scanner.scanAll=false
+      sonar.scanner.scanAll=true
       sonar.sources="c:/dev" 
       sonar.tests="c:/dev"
       sonar.dotnet.excludeTestProjects=true
