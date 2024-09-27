@@ -22,13 +22,18 @@ steps:
 #      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true
 #  workingDirectory: '$(Build.SourcesDirectory)'
 #  displayName: 'run scanner prep'
-
 - task: SonarCloudPrepare@3
   inputs:
     SonarCloud: 'Alex SonarCloud Token'
     organization: 'alexmeseldzija'
     scannerMode: 'MSBuild'
     projectKey: 'alexmeseldzija_alex-test'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.exclusions=**/*.bin
+      sonar.scanner.scanAll=false
 
 #- pwsh: |
 #      chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
