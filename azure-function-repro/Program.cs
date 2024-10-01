@@ -21,6 +21,7 @@ var host = new HostBuilder()
             {
                 options.Rules.Remove(toRemove);
             }
+            //sy
         });
     })
     .Build();
