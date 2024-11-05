@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.ObjectModel;
+
 namespace dog
 {
     public class Hello
@@ -16,4 +18,21 @@ namespace dog
         }
 
     }
+    class CSharp13Enumerables
+    {
+        private ReadOnlySet<int> _setWrapper;
+
+        public int[] SetWrapper
+        {
+            get { return _setWrapper.ToArray(); } // Noncompliant
+        }
+        private OrderedDictionary<int, string> _orderedDict;
+
+        public List<KeyValuePair<int, string>> OrderedDict
+        {
+            get { return _orderedDict.ToList(); } // Noncompliant
+        }
+
+    }
+
 }
