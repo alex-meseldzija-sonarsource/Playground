@@ -6,9 +6,34 @@ namespace dog
     public class Hello
     {
         private int y; 
+
         public static int AddNumber(int a, int b)
         {
             int x = 10;
+            int y = 12;
+            int z = 13;
+            int p = 10;
+            int l = 12;
+            int k = 13;
+            int aa = 10;
+            int bb = 13;
+            int cc = 10;
+            int dd = 10; 
+            return a + b;
+        }
+
+        public static int AddNumberCopy(int a, int b)
+        {
+            int x = 10;
+            int y = 12;
+            int z = 13;
+            int p = 10;
+            int l = 12;
+            int k = 13;
+            int aa = 10;
+            int bb = 13;
+            int cc = 10;
+            int dd = 10;
             return a + b;
         }
 
