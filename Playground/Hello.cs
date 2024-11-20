@@ -43,6 +43,7 @@ namespace dog
         }
 
     }
+#if NET9_0_OR_GREATER
     class CSharp13Enumerables
     {
         private ReadOnlySet<int> _setWrapper;
@@ -59,5 +60,6 @@ namespace dog
         }
 
     }
+#endif
 
 }
