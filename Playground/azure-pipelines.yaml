@@ -14,6 +14,7 @@ steps:
     sudo apt-get update
     sudo apt-get install -y openjdk-17-jdk
   displayName: 'Install OpenJDK 17'
+
 - script: |
     JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64
     
@@ -23,6 +24,11 @@ steps:
     # Prepend Java 17 to PATH to ensure it's the default in this pipeline
     echo "##vso[task.setvariable variable=PATH]$JAVA_17_HOME/bin:$(PATH)"
   displayName: 'Set JAVA_HOME to Java 17'
+
+- script: |
+    sudo apt-get update && \
+    sudo apt-get install -y dotnet-sdk-9.0
+  displayName: 'Install .NET 9.0 SDK'
 
 #- pwsh: |
 #      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true
