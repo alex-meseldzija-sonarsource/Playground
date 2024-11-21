@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-24.04'
 
 variables:
   solution: '**/*.sln'
@@ -11,17 +11,18 @@ variables:
 
 steps:
 - script: |
-    echo "JAVA_HOME: $JAVA_HOME"
-    echo "PATH: $PATH"
-    java -version
-  displayName: 'Verify Java Installation'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Restore solution'
-  inputs:
-    command: 'restore'
-    projects: '**/*.sln'
-    feedsToUse: 'select'
+    sudo apt-get update
+    sudo apt-get install -y openjdk-17-jdk
+  displayName: 'Install OpenJDK 17'
+- script: |
+    JAVA_17_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    
+    # Set JAVA_HOME to point to Java 17
+    echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_17_HOME"
+    
+    # Prepend Java 17 to PATH to ensure it's the default in this pipeline
+    echo "##vso[task.setvariable variable=PATH]$JAVA_17_HOME/bin:$(PATH)"
+  displayName: 'Set JAVA_HOME to Java 17'
 
 #- pwsh: |
 #      dotnet ./scanner/SonarScanner.MSBuild.dll begin /o:"alexmeseldzija" /k:"alexmeseldzija_alex-test" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="21d941b2f90bc284309dfed9bc1fa611bd39feed" /d:sonar.verbose=true
@@ -45,6 +46,8 @@ steps:
       sonar.scanner.skipJreProvisioning=true
       sonar.verbose=true
       sonar.exclusions="**/*.yaml"
+      sonar.cpd.cs.minimumTokens=2
+      sonar.cpd.cs.minimumLines=2
 
 #- pwsh: |
 #      chmod -R +x ./scanner/sonar-scanner-5.0.1.3006/bin/*
