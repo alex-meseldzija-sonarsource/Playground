@@ -48,7 +48,7 @@ steps:
       sonar.exclusions="**/Excluded/**,**/Excluded2/**"
       sonar.scanner.scanAll=true
       sonar.verbose=true
-      sonar.exclusions="**/*.yaml"
+      # sonar.exclusions="**/*.yaml"
       sonar.cpd.cs.minimumTokens=2
       sonar.cpd.cs.minimumLines=2
 
