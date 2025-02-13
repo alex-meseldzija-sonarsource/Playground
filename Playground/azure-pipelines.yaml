@@ -4,12 +4,17 @@ trigger:
 pool:
   vmImage: 'ubuntu-24.04'
 
+parameters:
+  - name: sonarcloudExclusion
+    type: array
+    default: []
+    displayName: 'SonarCloud Exclusions'
+    description: 'List of files to exclude from SonarCloud analysis'
+
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  sonarcloudExclusion: 
-    - '**/Excluded/**'
 
 steps:
 # - script: |
@@ -47,7 +52,7 @@ steps:
       # Additional properties that will be passed to the scanner, 
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
-      sonar.exclusions="**/Excluded/**,,${{ join(',',variables.sonarcloudExclusion) }}"
+      sonar.exclusions="**/Excluded/**,,${{ join(',',parameters.sonarcloudExclusion) }}"
       sonar.scanner.scanAll=true
       sonar.verbose=true
       # sonar.exclusions="**/*.yaml"
