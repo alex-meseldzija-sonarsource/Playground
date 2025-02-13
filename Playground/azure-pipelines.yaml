@@ -6,10 +6,9 @@ pool:
 
 parameters:
   - name: sonarcloudExclusion
-    type: array
+    type: object
     default: []
     displayName: 'SonarCloud Exclusions'
-    description: 'List of files to exclude from SonarCloud analysis'
 
 variables:
   solution: '**/*.sln'
