@@ -8,6 +8,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  sonarcloudExclusion: ['**/Excluded/**']
 
 steps:
 # - script: |
@@ -45,7 +46,7 @@ steps:
       # Additional properties that will be passed to the scanner, 
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
-      sonar.exclusions="**/Excluded/**, **/Excluded2/**"
+      sonar.exclusions="**/Excluded/**,,${{ join(',',variables.sonarcloudExclusion) }}"
       sonar.scanner.scanAll=true
       sonar.verbose=true
       # sonar.exclusions="**/*.yaml"
